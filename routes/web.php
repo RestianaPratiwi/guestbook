@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('admin');
 });
 
 Auth::routes([
@@ -24,4 +24,7 @@ Route::group([
 
     //guestbook.test/admin/dashboard -> route('admin.dashboard')
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+
+    // Routing dari Institution
+    Route::resource('/institution', App\Http\Controllers\InstitutionController::class);
 });
