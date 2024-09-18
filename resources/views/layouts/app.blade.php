@@ -34,7 +34,6 @@
 
     @stack('scripts')
 
-    @stack('scripts2')
     
     <script src="{{ asset('/js/mazer.js')}}"></script>
 

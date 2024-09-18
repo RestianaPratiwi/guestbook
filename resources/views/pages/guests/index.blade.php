@@ -4,40 +4,39 @@
 <div class="page-heading">
     <div class="page-title mb-3">
         <h3>
-            <span class="bi bi-building"></span>
-            Institution
+            <span class="bi bi-people"></span>
+            Guest
         </h3>
     </div>
 
-    <a href="{{route('admin.institution.create') }}"
-    class="btn btn-primary mb-3">
-    <span class="bi bi-plus-circle"></span>
-    Create new
-    </a>
+    
     <section class="section">
         <div class="card">
             <div class="card-body">
                 <table id="datatable"class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Institution Name</th>
+                            <th>No<th>
+                            <th>Guest Name</th>
+                            <th>From</th>
+                            <th>Phone Number</th>
                             <th>Actions</th>
                         <tr>
                     </thead>
                     <tbody>
-                        @foreach ($institutions as $item)
+                        @foreach ($guests as $item)
                             <tr>
-                                <td>{{ $item->name }}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->fullname }}</td>
+                                <td>{{ $item->from }}</td>
+                                <td>{{ $item->phonenumber }}</td>
                                 <td>
-                                    <a href="{{ route('admin.institution.show', $item->id)}}" class="btn btn-outline-secondary btn-sm me-1">
+                                    <a href="{{ route('admin.guests.show', $item->id)}}" class="btn btn-outline-secondary btn-sm me-1">
                                         <span class="bi bi-eye"></span>
                                         Show
                                     </a>
-                                    <a href="{{ route('admin.institution.edit', $item->id)}}" class="btn btn-secondary btn-sm me-1">
-                                        <span class="bi bi-pencil"></span>
-                                        Edit
-                                    </a>
-                                      <a href="#" class="btn btn-sm btn-danger" onclick="handleDestroy(`{{ route('admin.institution.destroy', $item->id) }}`)">
+                                  
+                                      <a href="#" class="btn btn-sm btn-danger" onClick="handleDestroy(`{{ route('admin.guests.destroy', $item->id) }}`)">
                                       <span class="bi bi-trash"></span>
                                       Delete
                                       </a>
@@ -61,7 +60,6 @@
     @method("DELETE")
 </form>
 @endsection
-
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('/vendors/simple-datatables/style.css') }}">
