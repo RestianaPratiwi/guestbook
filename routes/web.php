@@ -1,17 +1,20 @@
 <?php
 
+use App\Http\Controllers\FormGuestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return redirect('admin');
-});
+Route::get('/', [FormGuestController::class, 'index'])->name('form.index');
+Route::post('/', [FormGuestController::class, 'store'])->name('form.store');
+
 
 Auth::routes([
     'register' => false,
     'reset' => false,
     'verify' => false,
 ]);
+
+
 
 
 
